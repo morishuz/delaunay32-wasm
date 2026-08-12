@@ -1,0 +1,9 @@
+build/
+dist/
+node_modules/
+playwright-report/
+test-results/
+examples/vite/dist/
+examples/vite/file-dist/
+.DS_Store
+*.log

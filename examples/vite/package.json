@@ -1,0 +1,9 @@
+{
+  "name": "delaunay32-vite-example",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "delaunay32": "file:../.."
+  }
+}
+

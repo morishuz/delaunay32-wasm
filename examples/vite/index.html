@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Interactive Delaunay32 polygon triangulation in WebAssembly"
+    />
+    <title>Delaunay32 · WebAssembly polygon demo</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="demo">
+      <header class="topbar">
+        <div>
+          <strong>Delaunay32</strong>
+          <span>polygon triangulation · WebAssembly</span>
+        </div>
+      </header>
+
+      <section class="stage" aria-label="Triangulated Delaunay32 polygon">
+        <canvas id="mesh" width="1200" height="315"></canvas>
+        <canvas id="outline" width="1200" height="315" aria-hidden="true"></canvas>
+      </section>
+
+      <section class="controls" aria-label="Demo controls">
+        <div class="point-control">
+          <label for="points">
+            <span>Interior points</span>
+            <output id="point-count" for="points">2,000</output>
+          </label>
+          <input
+            id="points"
+            type="range"
+            min="100"
+            max="100000"
+            step="100"
+            value="2000"
+          />
+          <div class="range-labels" aria-hidden="true">
+            <span>100</span>
+            <span>100k</span>
+          </div>
+        </div>
+
+        <fieldset>
+          <legend>Distribution</legend>
+          <div class="choice-group">
+            <label>
+              <input type="radio" name="sampling" value="uniform" />Uniform
+            </label>
+            <label>
+              <input type="radio" name="sampling" value="blue-noise" />Blue noise
+            </label>
+            <label>
+              <input type="radio" name="sampling" value="jittered-grid" checked />Jittered
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Display</legend>
+          <div class="choice-group display-options">
+            <label><input id="fill" type="checkbox" checked />Fill</label>
+            <label>
+              <input id="triangle-edges" type="checkbox" checked />Triangle edges
+            </label>
+            <label><input id="nodes" type="checkbox" />Interior nodes</label>
+            <label><input id="polygon-nodes" type="checkbox" />Polygon nodes</label>
+            <label>
+              <input id="polygon-outline" type="checkbox" checked />Polygon
+            </label>
+          </div>
+        </fieldset>
+
+        <div class="actions">
+          <button id="resample" type="button">↻ New pattern</button>
+          <button id="save-svg" type="button" disabled>↓ Save SVG</button>
+        </div>
+      </section>
+
+      <footer>
+        <span id="faces">— triangles</span>
+        <span id="duration">— total</span>
+        <span>single-core worker</span>
+      </footer>
+    </main>
+
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>

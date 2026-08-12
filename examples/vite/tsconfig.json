@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "../..",
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "paths": {
+      "delaunay32": ["dist/index.d.ts"]
+    }
+  },
+  "include": ["*.ts"]
+}

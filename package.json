@@ -1,0 +1,61 @@
+{
+  "name": "delaunay32",
+  "version": "0.1.0",
+  "description": "Fast, exact 2D Delaunay triangulation for browsers, powered by WebAssembly",
+  "type": "module",
+  "license": "MIT",
+  "author": "morishuz",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/morishuz/delaunay32-wasm.git"
+  },
+  "homepage": "https://github.com/morishuz/delaunay32-wasm#readme",
+  "bugs": "https://github.com/morishuz/delaunay32-wasm/issues",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "keywords": [
+    "delaunay",
+    "triangulation",
+    "computational-geometry",
+    "webassembly",
+    "wasm"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./wasm": "./dist/delaunay32-module.wasm"
+  },
+  "files": [
+    "dist/",
+    "README.md",
+    "LICENSE",
+    "THIRD_PARTY.md"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "clean": "node scripts/clean.mjs",
+    "typecheck": "tsc --noEmit",
+    "build:ts": "tsc -p tsconfig.build.json",
+    "build:wasm": "node scripts/build-wasm.mjs",
+    "build": "npm run clean && npm run build:ts && npm run build:wasm",
+    "test": "npm run typecheck && npm run test:browser",
+    "test:browser": "playwright test",
+    "test:package": "node scripts/test-package-consumers.mjs",
+    "test:serve": "vite --host 127.0.0.1 --port 4173",
+    "example": "vite --config examples/vite/vite.config.ts",
+    "example:build": "tsc -p examples/vite/tsconfig.json && vite build --config examples/vite/vite.config.ts",
+    "example:file": "tsc -p examples/vite/tsconfig.json && vite build --mode local-file --config examples/vite/vite.config.ts && node scripts/build-file-example.mjs",
+    "pack:check": "node scripts/check-package.mjs",
+    "prepack": "npm run build && npm run pack:check"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.62.1",
+    "@types/node": "22.20.1",
+    "typescript": "5.9.2",
+    "vite": "7.3.6"
+  }
+}

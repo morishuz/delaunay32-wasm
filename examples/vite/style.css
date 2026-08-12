@@ -1,0 +1,233 @@
+:root {
+  --background: #eef0eb;
+  --ink: #171a19;
+  --muted: #747a76;
+  color: var(--ink);
+  background: var(--background);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-synthesis: none;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  background: var(--background);
+}
+
+button,
+input { font: inherit; }
+
+.demo {
+  width: min(1180px, calc(100% - 40px));
+  margin: 48px auto;
+}
+
+.topbar {
+  min-height: 38px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.topbar > div:first-child {
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+  min-width: 0;
+}
+
+.topbar strong {
+  font-size: 12px;
+  letter-spacing: -.01em;
+}
+
+.topbar > div:first-child span {
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3.806 / 1;
+  overflow: hidden;
+}
+
+.stage canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+#outline { pointer-events: none; }
+
+.controls {
+  width: min(620px, 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 19px;
+  padding-top: 28px;
+}
+
+.point-control { width: 100%; }
+
+.point-control label {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 650;
+}
+
+.point-control output {
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+input[type="range"] {
+  appearance: none;
+  width: 100%;
+  height: 17px;
+  margin: 7px 0 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 1px;
+  background: var(--ink);
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 13px;
+  height: 13px;
+  margin-top: -6px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--ink);
+}
+
+input[type="range"]::-moz-range-track {
+  height: 1px;
+  border: 0;
+  background: var(--ink);
+}
+
+input[type="range"]::-moz-range-progress {
+  height: 1px;
+  background: var(--ink);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 13px;
+  height: 13px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--ink);
+}
+
+.range-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: -1px;
+  color: var(--muted);
+  font-size: 8px;
+  font-variant-numeric: tabular-nums;
+}
+
+fieldset {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+legend {
+  margin-bottom: 7px;
+  padding: 0;
+  color: var(--muted);
+  font-size: 8px;
+  font-weight: 750;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.choice-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 7px;
+}
+
+.choice-group label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 620;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.choice-group label:has(input:checked) { color: var(--ink); }
+
+.choice-group input {
+  width: 12px;
+  height: 12px;
+  margin: 0;
+  accent-color: var(--ink);
+}
+
+button {
+  padding: 0;
+  border: 0;
+  color: var(--ink);
+  background: transparent;
+  font-size: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+button:hover { text-decoration: underline; text-underline-offset: 3px; }
+button:focus-visible,
+input:focus-visible { outline: 1px solid var(--ink); outline-offset: 3px; }
+button:disabled { opacity: .45; cursor: wait; }
+
+footer {
+  display: flex;
+  gap: 18px;
+  padding-top: 21px;
+  color: var(--muted);
+  font-size: 8px;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 620px) {
+  .demo { width: min(100% - 24px, 560px); margin: 20px auto; }
+  .topbar > div:first-child span { display: none; }
+  .stage { min-height: 160px; aspect-ratio: auto; overflow-x: auto; }
+  .stage canvas { width: 610px; max-width: none; }
+  .controls { padding-top: 24px; }
+  footer { flex-wrap: wrap; }
+}

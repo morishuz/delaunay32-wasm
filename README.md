@@ -12,7 +12,7 @@ samplers as precompiled WebAssembly behind a typed, ESM-only JavaScript API.
 - Native uniform, blue-noise, and jittered-grid polygon sampling
 - Synchronous API and a UI-safe module-worker API
 - No runtime dependencies, `SharedArrayBuffer`, COOP, or COEP requirement
-- About 230 KB of WebAssembly (87 KB gzip) in the current release build
+- About 246 KB of WebAssembly (99 KB gzip) in the current release build
 
 [Try the interactive demo](https://morishuz.github.io/delaunay32-wasm/).
 
@@ -105,6 +105,9 @@ console.log(result.pipelineReport);
 ```
 
 Sampling modes are `"uniform"`, `"blue-noise"`, and `"jittered-grid"`.
+Seeds are reproducible within a native library release. With the upgrade to
+Delaunay32 0.7.0, sparse multi-domain sample sequences can differ from earlier
+releases even when the seed and inputs are unchanged.
 The pipeline report separates native sampling, quantization, and triangulation
 time. Worker round-trip and drawing time remain application-level measurements.
 
@@ -323,4 +326,4 @@ public contract.
 
 ## License
 
-MIT. The package wraps Delaunay32 v0.6.2; see [THIRD_PARTY.md](THIRD_PARTY.md).
+MIT. The package wraps Delaunay32 v0.7.0; see [THIRD_PARTY.md](THIRD_PARTY.md).

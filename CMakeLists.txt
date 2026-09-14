@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.21)
-project(delaunay32_wasm VERSION 0.1.0 LANGUAGES CXX)
+project(delaunay32_wasm VERSION 0.2.0 LANGUAGES CXX)
 
 if(NOT EMSCRIPTEN)
     message(FATAL_ERROR "delaunay32-wasm must be configured through emcmake")
@@ -14,7 +14,7 @@ include(FetchContent)
 FetchContent_Declare(
     delaunay32
     GIT_REPOSITORY https://github.com/morishuz/delaunay32.git
-    GIT_TAG ae2d0cf9167deefd0d180e39a30be3cc8f0b0698
+    GIT_TAG d5c10aaa96169ccfd9089df2299d45f29c085a46
 )
 FetchContent_MakeAvailable(delaunay32)
 

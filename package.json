@@ -1,6 +1,6 @@
 {
   "name": "delaunay32",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Fast, exact 2D Delaunay triangulation for browsers, powered by WebAssembly",
   "type": "module",
   "license": "MIT",
